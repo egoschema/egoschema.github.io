@@ -1,0 +1,23 @@
+var input = cb_obj.value;
+//renderer.glyph.global_alpha = source.data.z;
+//renderer.trigger('change')
+var answers;
+var toHide;
+var a;
+for (let i = 0; i < source.data.clip_url.length; i++){
+    toHide = true;
+    answers = source.data.a[i].split(" ");
+    for (let j = 0; j < answers.length; j++){
+        a = answers[j];
+        if(a.includes(input)){
+            toHide = false;
+        }
+    }
+    
+    if(toHide){
+        source.data.alpha[i] = 0.2;
+    } else {
+        source.data.alpha[i] = 1.0;
+    }
+}
+source.change.emit()

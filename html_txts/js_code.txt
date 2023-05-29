@@ -1,0 +1,18 @@
+var myIndex = source.selected.indices[0];
+var myUrl = source.data.clip_url[myIndex];
+var q = source.data.q[myIndex];
+var a = source.data.a[myIndex];
+var wa = source.data.wa[myIndex];
+var wb = source.data.wb[myIndex];
+var wc = source.data.wc[myIndex];
+var wd = source.data.wd[myIndex];
+var new_link = "clip.html?";
+new_link = new_link + "param1=" + encodeURIComponent(myUrl);
+new_link = new_link + "&param2=" + encodeURIComponent(q);
+new_link = new_link + "&param3=" + encodeURIComponent(a);
+new_link = new_link + "&param4=" + encodeURIComponent(wa);
+new_link = new_link + "&param5=" + encodeURIComponent(wb);
+new_link = new_link + "&param6=" + encodeURIComponent(wc);
+new_link = new_link + "&param7=" + encodeURIComponent(wd);
+
+window.location.href = new_link;

@@ -1,0 +1,9 @@
+<div style="max-width: 600px; margin: auto; padding: 20px; display: flex; justify-content: center; align-items: center; background-color: #f1f1f1; border-radius: 50px; box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.15);">
+    <form style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+        <input type="text" 
+               style="width: 95%; height: 40px; border: none; margin: 0 15px; font-size: 16px; outline: none; background-color: transparent;" 
+               placeholder="Search...">
+    </form>
+</div>
+
+
