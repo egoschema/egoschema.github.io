@@ -1,8 +1,8 @@
 <div id='main' style = "display: inline-block;">
-    <div id='image' style = "display: inline-block;">
+    <div id='image' style = "display: inline-block; vertical-align: top;">
         <img src="@original_url" height="150" width="200" border="2"></img>
     </div>
-    <div id='text' style = "display: inline-block; word-wrap: break-word;">
-        <span style="font-size: 10px;">Some metadata: </span></br>
+    <div id='text' style = "display: inline-block; width: 200px; word-wrap: break-word; vertical-align: top;">
+        <span style="font-size: 10px;"><b>Question:</b> @q</span></br>
     </div>
 </div>
