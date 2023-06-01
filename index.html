@@ -45,8 +45,8 @@
         .logo {
             font-size: 4em;
             font-weight: bold;
-            margin-bottom: 30px;
             margin-top: 15px;
+            margin-bottom: 5px;
         }
 
         /* Navigation List Styling */
@@ -88,6 +88,15 @@
             gap: 15px;
         }
 
+        /* Header Top Styling */
+        .header-top-name{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
         /* Berkeley Logo Styling */
         .berkeley-logo {
             position: fixed;
@@ -102,7 +111,7 @@
         .team-names {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 150px;
             margin-bottom: 30px;
             margin-top: 30px;
             z-index: 1;
@@ -135,7 +144,11 @@
     <header class="navbar">
         <!-- Logo Section -->
         <div class="header-top">
-            <div class="logo"><a href="index.html">EgoSchema</a></div>
+            <div class="logo"><a href="index.html">EgoSchema</a></div><br>
+        </div>
+
+        <div class="header-top-name">
+            <span>A Diagnostic Benchmark for Very Long-form Video Language Understanding</span>
         </div>
 
         <!-- Team Names -->
