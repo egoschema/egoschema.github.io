@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat&display=swap" rel="stylesheet">
 
     <style>
+        /* Define CSS Variables */
         :root {
             --primary-color: #f6f6f6;
             --secondary-color: #222;
@@ -17,6 +18,7 @@
             --section-background: #333;
         }
 
+        /* Body Styling */
         body {
             font-family: 'Lato', sans-serif;
             margin: 0;
@@ -25,6 +27,7 @@
             color: var(--primary-color);
         }
 
+        /* Navbar Styling */
         .navbar {
             display: flex;
             flex-direction: column;
@@ -35,33 +38,28 @@
             box-shadow: var(--header-shadow);
             background-image: url('background.png');
             background-size: cover;
-            position: relative; /* Added */
+            position: relative;
         }
 
-        .navbar:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Added */
-            z-index: -1; /* Added */
-        }
-
-        .navbar .logo {
-            font-size: 3em;
+        /* Logo Styling */
+        .logo {
+            font-size: 4em;
             font-weight: bold;
-            margin-bottom: 15px;
-            z-index: 1; /* Added */
+            margin-bottom: 30px;
+            margin-top: 15px;
         }
 
+        /* Navigation List Styling */
         .navbar ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 0;
-            z-index: 1; /* Added */
+            padding: 15px;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            margin-top: 30px;
         }
 
         .navbar ul li {
@@ -69,22 +67,94 @@
             margin-right: 15px;
         }
 
+        /* Navigation Link Styling */
         .navbar a {
             color: var(--primary-color);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1.2em;
             transition: color 0.3s ease-in-out;
         }
 
         .navbar a:hover {
             color: var(--accent-color);
         }
+
+        /* Header Top Styling */
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Berkeley Logo Styling */
+        .berkeley-logo {
+            position: fixed;
+            bottom: 7px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 100px; 
+            height: auto;
+        }
+
+        /* Team Names Styling */
+        .team-names {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 30px;
+            margin-top: 30px;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Names Styling */
+        .names {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .first-names, .second-names {
+            font-size: 1.5em;
+        }
+
+        .team-names p {
+            margin: 0;
+        }
+
     </style>
 </head>
 
 <body>
+    <!-- Navbar Section -->
     <header class="navbar">
-        <div class="logo"><a href="main_page.html">EgoSchema</a></div>
+        <!-- Logo Section -->
+        <div class="header-top">
+            <div class="logo"><a href="index.html">EgoSchema</a></div>
+        </div>
+
+        <!-- Team Names -->
+        <div class="team-names">
+            <div class="names">
+                <span class="first-names">Karttikeya</span>
+                <span class="second-names">Mangalam</span>
+            </div>
+            <div class="names">
+                <span class="first-names">Raiymbek</span>
+                <span class="second-names">Akshulakov</span>
+            </div>
+            <div class="names">
+                <span class="first-names">Jitendra</span>
+                <span class="second-names">Malik</span>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
         <nav>
             <ul>
                 <li><a href="explorer.html">Explore</a></li>
@@ -93,6 +163,9 @@
                 <li><a href="download.html">Download</a></li>
             </ul>
         </nav>
+
+        <!-- Berkeley Logo -->
+        <img src="berkeley_logo/bear_logo_3.png" alt="Berkeley Logo" class="berkeley-logo">
     </header>
 </body>
 
