@@ -25,6 +25,10 @@
             padding: 0;
             background-color: var(--secondary-color);
             color: var(--primary-color);
+            font-size: 100%; /* Revert font size */
+            background-image: url('background.png');
+            background-position: center;
+            background-size:cover;
         }
 
         /* Navbar Styling */
@@ -35,18 +39,15 @@
             justify-content: center;
             height: 100vh;
             color: var(--primary-color);
-            box-shadow: var(--header-shadow);
-            background-image: url('background.png');
-            background-size: cover;
             position: relative;
         }
 
         /* Logo Styling */
         .logo {
-            font-size: 4em;
+            font-size: 4em; /* Revert font size */
             font-weight: bold;
-            margin-top: 15px;
-            margin-bottom: 5px;
+            margin-top: 15px; /* Revert margin */
+            margin-bottom: 5px; /* Revert margin */
         }
 
         /* Navigation List Styling */
@@ -54,17 +55,17 @@
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 15px;
+            padding: 15px; /* Revert padding */
             z-index: 1;
             background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            margin-bottom: 30px;
-            margin-top: 30px;
+            border-radius: 10px; /* Revert border radius */
+            margin-bottom: 30px; /* Revert margin */
+            margin-top: 30px; /* Revert margin */
         }
 
         .navbar ul li {
-            margin-left: 15px;
-            margin-right: 15px;
+            margin-left: 15px; /* Revert margin */
+            margin-right: 15px; /* Revert margin */
         }
 
         /* Navigation Link Styling */
@@ -72,7 +73,7 @@
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.2em;
+            font-size: 1.2em; /* Revert font size */
             transition: color 0.3s ease-in-out;
         }
 
@@ -85,7 +86,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
         }
 
         /* Header Top Styling */
@@ -93,47 +93,74 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
+            gap: 15px; /* Revert gap */
+            margin-bottom: 30px; /* Revert margin */
         }
 
-        /* Berkeley Logo Styling */
         .berkeley-logo {
-            position: fixed;
-            bottom: 7px;
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 100px; 
-            height: auto;
+            height: 100px;
         }
 
-        /* Team Names Styling */
-        .team-names {
+        .logo-container {
+            position: absolute; /* Change to absolute position */
+            bottom: 7px; /* Revert bottom position */
             display: flex;
             justify-content: center;
-            gap: 150px;
-            margin-bottom: 30px;
-            margin-top: 30px;
+            align-items: center;
+            gap: 20px; /* adjust this value as needed to create space between the logos */
+        }
+
+        .team-names {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch; /* make all children the same height */
+            margin-bottom: 30px; /* Revert margin */
+            margin-top: 30px; /* Revert margin */
             z-index: 1;
         }
 
-        /* Names Styling */
         .names {
+            width: 325px; /* Revert width */
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* center the content vertically */
             text-align: center;
             background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 10px; /* Revert border radius */
+            padding: 20px; /* Revert padding */
+            flex-basis: calc(33.33% - 100px); /* divide the space into three equal parts, 100px is for gap */
         }
 
         .first-names, .second-names {
-            font-size: 1.5em;
+            font-size: 1.5em; /* Revert font size */
         }
 
         .team-names p {
             margin: 0;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 0.4em; /* Width of the scrollbar */
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--secondary-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+        }
+
+        #frame_div {
+            width: 100%;
+            height: 100%;
+        }
+
+        #frame {
+            width: 100%;
+            height: 700px;
         }
 
     </style>
@@ -170,16 +197,27 @@
         <!-- Navigation Links -->
         <nav>
             <ul>
-                <li><a href="explorer.html">Explore</a></li>
+                <li><a href="explorer.html">Explore</a></li> <!-- Link to the Explore section on the same page -->
                 <li><a href="#paper">Paper</a></li>
                 <li><a href="team.html">Team</a></li>
                 <li><a href="download.html">Download</a></li>
             </ul>
         </nav>
 
-        <!-- Berkeley Logo -->
-        <img src="berkeley_logo/bear_logo_3.png" alt="Berkeley Logo" class="berkeley-logo">
+        <div class="logo-container">
+            <img src="berkeley_logo/bair_logo.png" alt="Berkeley Logo" class="berkeley-logo">
+            <img src="berkeley_logo/bear_logo_3.png" alt="Berkeley Logo" class="berkeley-logo">
+        </div>
     </header>
+
+    <!-- Explore Section
+    <section id="explore">
+        <div class="Explore title">Explore title</div>
+        <div id="frame_div">
+            <iframe src="plot.html" id="frame" frameBorder="0"></iframe>
+        <div>
+    </section> -->
+
 </body>
 
 </html>

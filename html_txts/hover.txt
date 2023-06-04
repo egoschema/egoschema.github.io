@@ -1,9 +1,1 @@
-<div id='main' style="display: flex; align-items: flex-start; border: 1px solid #ccc; padding: 10px; margin: 10px;">
-    <div id='image' style="display: inline-block; vertical-align: top;">
-        <img src="@original_url" height="150" width="200" border="2" alt="Image"></img>
-    </div>
-    <div id='text' style="display: inline-block; width: 200px; word-wrap: break-word; vertical-align: top; margin-left: 10px; style="font-size: 10px;">
-        <span style="font-weight: bold;">Question:</span><span>@q</span><br>
-        @scenarios
-    </div>
-</div>
+@hover_current
