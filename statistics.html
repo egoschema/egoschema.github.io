@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EgoSchema</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat&display=swap" rel="stylesheet">
+    <script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #f6f6f6;
+            --secondary-color: #222;
+            --accent-color: #00b4d8;
+            --light-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            --header-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+            --section-background: #333;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            color: var(--primary-color);
+            padding: 20px;
+            box-shadow: var(--header-shadow);
+            background-image: url('background.png');
+            background-size: cover;
+        }
+
+        .navbar .logo {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .navbar a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            background-color: var(--section-background);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: var(--light-shadow);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            transform: scale(1.02);
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="logo"><a href="index.html">EgoSchema</a></div>
+        <nav>
+            <ul>
+                <li><a href="explorer.html">Explore</a></li> <!-- Link to the Explore section on the same page -->
+                <li><a href="#paper">Paper</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="statistics.html">Statistics</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class='tableauPlaceholder' id='viz1686688775838' style='position: relative'>
+            <noscript>
+                <a href='#'>
+                    <img alt='EGO Schema ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Eg&#47;EgoSchema&#47;EgoSchema&#47;1_rss.png' style='border: none' />
+                </a>
+            </noscript>
+            <object class='tableauViz'  style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> <param name='site_root' value='' />
+                <param name='name' value='EgoSchema&#47;EgoSchema' /><param name='tabs' value='no' />
+                <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Eg&#47;EgoSchema&#47;EgoSchema&#47;1.png' /> 
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+            </object>
+        </div>                
+        <script type='text/javascript'>                    
+            var divElement = document.getElementById('viz1686688775838');                    
+            var vizElement = divElement.getElementsByTagName('object')[0];                    
+            if ( divElement.offsetWidth > 800 ) 
+                { vizElement.style.width='100%';vizElement.style.height='1107px';} 
+            else if ( divElement.offsetWidth > 500 ) 
+                { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} 
+            else { vizElement.style.width='100%';vizElement.style.height='1927px';}                     
+            var scriptElement = document.createElement('script');                    
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                   
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+        </script>
+    </main> 
+</body>
+
+</html>
