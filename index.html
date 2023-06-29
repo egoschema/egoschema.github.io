@@ -35,8 +35,8 @@
             background-image: url('background.png');
             background-position: center;
             background-repeat: repeat-y;
-            background-size: 100vw 100vh;
-            background-position: 0px 0vh;
+            background-size: 250vh 100vh;
+            background-position: -33.35vh 0vh;
             background-color: var(--secondary-color);
         }
 
@@ -47,6 +47,7 @@
             color: var(--primary-color);
             font-size: 100%; /* Revert font size */
             width: 100vw;
+            overflow: hidden;
         }
 
         /* Navbar Styling */
@@ -274,10 +275,10 @@
             <!-- Navigation Links -->
             <nav>
                 <ul>
-                    <li><a href="#explore">Explore</a></li> <!-- Link to the Explore section on the same page -->
+                    <li><a href="explorer.html">Explore</a></li> <!-- Link to the Explore section on the same page -->
                     <li><a href="#paper">Paper</a></li>
                     <li><a href="team.html">Team</a></li>
-                    <li><a href="#download">Download</a></li>
+                    <li><a href="download.html">Download</a></li>
                     <li><a href="https://public.tableau.com/views/EgoSchema/EGOSchema?:showVizHome=no">Statistics</a></li>
                 </ul>
             </nav>
@@ -306,11 +307,36 @@
         </section>
     </div>
 
+    <!--
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            OverlayScrollbars(document.querySelectorAll("body"), { });
+            OverlayScrollbars(document.querySelectorAll("body"), { 
+                scrollbars: {
+                    autoHide: 'scroll',
+                    autoHideDelay: 500,
+                    clickScrolling: true,
+                    dragScrolling: true,
+                    touchSupport: true,
+                    snapHandle: false,
+                    autoUpdate: true,
+                    autoUpdateInterval: 33,
+                    visibility: "visible",
+                    autoHide: "never",
+                    scrollbars: {
+                        visibility: "auto",
+                        autoHide: "never",
+                        autoHideDelay: 800,
+                        dragScrolling: true,
+                        clickScrolling: true,
+                        touchSupport: true,
+                    },
+                    className: "os-theme-dark", // this is the theme
+                }
+            });
         });
     </script>
+    -->
+
 
 </body>
 
