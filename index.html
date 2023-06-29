@@ -14,6 +14,8 @@
       "url":"https://egoschema.github.io"
     }
     </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/css/OverlayScrollbars.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/js/OverlayScrollbars.min.js"></script>
     <meta name="google-site-verification" content="js0qc7w_QY2wOsB1lqE0whPAYdkCWtCpplr1dsOm9s4" />
     <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat&display=swap" rel="stylesheet">
 
@@ -29,16 +31,22 @@
         }
 
         /* Body Styling */
+        #content {
+            background-image: url('background.png');
+            background-position: center;
+            background-repeat: repeat-y;
+            background-size: 100vw 100vh;
+            background-position: 0px 0vh;
+            background-color: var(--secondary-color);
+        }
+
         body {
             font-family: 'Lato', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--secondary-color);
             color: var(--primary-color);
             font-size: 100%; /* Revert font size */
-            background-image: url('background.png');
-            background-position: center;
-            background-size:cover;
+            width: 100vw;
         }
 
         /* Navbar Styling */
@@ -50,14 +58,22 @@
             height: 100vh;
             color: var(--primary-color);
             position: relative;
+            box-shadow: 0em 1.25em 1.25em -0.625em rgba(0,0,0,1);
         }
 
         /* Logo Styling */
         .logo {
             font-size: 4em; /* Revert font size */
             font-weight: bold;
-            margin-top: 15px; /* Revert margin */
-            margin-bottom: 5px; /* Revert margin */
+            margin-top: 1em; /* Revert margin */
+            margin-bottom: 1em; /* Revert margin */
+        }
+
+        .smaller-logo {
+            font-size: 3em; /* Revert font size */
+            font-weight: bold;
+            margin-top: 0.5em; /* Revert margin */
+            margin-bottom: 0.5em; /* Revert margin */
         }
 
         /* Navigation List Styling */
@@ -65,17 +81,17 @@
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 15px; /* Revert padding */
+            padding: 1em; /* Revert padding */
             z-index: 1;
             background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 10px; /* Revert border radius */
-            margin-bottom: 30px; /* Revert margin */
-            margin-top: 30px; /* Revert margin */
+            border-radius: 0.625em; /* Revert border radius */
+            margin-bottom: 1.875em; /* Revert margin */
+            margin-top: 1.875e; /* Revert margin */
         }
 
         .navbar ul li {
-            margin-left: 15px; /* Revert margin */
-            margin-right: 15px; /* Revert margin */
+            margin-left: 1em; /* Revert margin */
+            margin-right: 1em; /* Revert margin */
         }
 
         /* Navigation Link Styling */
@@ -103,43 +119,38 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px; /* Revert gap */
-            margin-bottom: 30px; /* Revert margin */
+            gap: 1em; /* Revert gap */
+            margin-bottom: 1.875em; /* Revert margin */
         }
 
         .berkeley-logo {
-            height: 100px;
+            height: 6.25em;
         }
 
         .logo-container {
-            position: absolute; /* Change to absolute position */
-            bottom: 7px; /* Revert bottom position */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px; /* adjust this value as needed to create space between the logos */
+            gap: 1.25em; /* adjust this value as needed to create space between the logos */
         }
 
         .team-names {
             display: flex;
             justify-content: space-between;
             align-items: stretch; /* make all children the same height */
-            margin-bottom: 30px; /* Revert margin */
-            margin-top: 30px; /* Revert margin */
+            margin-bottom: 1.875em; /* Revert margin */
+            margin-top: 1.875em; /* Revert margin */
             z-index: 1;
         }
 
         .names {
-            width: 325px; /* Revert width */
+            width: 20.3em; /* Revert width */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center; /* center the content vertically */
             text-align: center;
             background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px; /* Revert border radius */
-            padding: 20px; /* Revert padding */
-            flex-basis: calc(33.33% - 100px); /* divide the space into three equal parts, 100px is for gap */
+            border-radius: 0.625em; /* Revert border radius */
+            padding: 1.25em; /* Revert padding */
+            flex-basis: calc(33.33% - 6.25em); /* divide the space into three equal parts, 100px is for gap */
         }
 
         .first-names, .second-names {
@@ -150,27 +161,41 @@
             margin: 0;
         }
 
-        /* Scrollbar Styling */
         ::-webkit-scrollbar {
-            width: 0.4em; /* Width of the scrollbar */
+            display: none;
         }
 
-        ::-webkit-scrollbar-track {
-            background-color: var(--secondary-color);
+        #explore {
+            box-shadow: 0em -1.25em 1.25em -0.625em rgba(0,0,0,0.5);
+            box-shadow: 0em 1.25em 1.25em -0.625em rgba(0,0,0,1);
+            height: 100vh;
         }
 
-        ::-webkit-scrollbar-thumb {
-            background-color: var(--primary-color);
+        .plot { 
+            width: 70vw;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            margin-left: 15vw;
+            padding-bottom: 1.5em;
         }
 
-        #frame_div {
-            width: 100%;
-            height: 100%;
+        #download {
+            box-shadow: 0em 1.25em 1.25em -0.625em rgba(0,0,0,0.5);
+            max-width: 1200px;
+            margin-top: 20px;
+            margin: 0 auto;
+            padding: 20px;
+            height: 100vh;
         }
 
-        #frame {
-            width: 100%;
-            height: 700px;
+        .download_section {
+            margin-bottom: 25px;
+            background-color: var(--section-background);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: var(--light-shadow);
+            transition: transform 0.3s ease-in-out;
         }
 
         @media (max-width: 768px) {
@@ -218,57 +243,74 @@
 </head>
 
 <body>
-    <!-- Navbar Section -->
-    <header class="navbar">
-        <!-- Logo Section -->
-        <div class="header-top">
-            <div class="logo"><a href="index.html">EgoSchema</a></div><br>
-        </div>
-
-        <div class="header-top-name">
-            <span>A Diagnostic Benchmark for Very Long-form Video Language Understanding</span>
-        </div>
-
-        <!-- Team Names -->
-        <div class="team-names">
-            <div class="names">
-                <span class="first-names">Karttikeya Mangalam</span>
-                <!-- <span class="second-names">Mangalam</span> -->
+    <div id="content">
+        <!-- Navbar Section -->
+        <header class="navbar">
+            <!-- Logo Section -->
+            <div class="header-top">
+                <div class="logo"><a href="index.html">EgoSchema</a></div><br>
             </div>
-            <div class="names">
-                <span class="first-names">Raiymbek Akshulakov</span>
-                <!-- <span class="second-names">Akshulakov</span> -->
+
+            <div class="header-top-name">
+                <span>A Diagnostic Benchmark for Very Long-form Video Language Understanding</span>
             </div>
-            <div class="names">
-                <span class="first-names">Jitendra Malik</span>
-                <!-- <span class="second-names">Malik</span> -->
+
+            <!-- Team Names -->
+            <div class="team-names">
+                <div class="names">
+                    <span class="first-names">Karttikeya Mangalam</span>
+                    <!-- <span class="second-names">Mangalam</span> -->
+                </div>
+                <div class="names">
+                    <span class="first-names">Raiymbek Akshulakov</span>
+                    <!-- <span class="second-names">Akshulakov</span> -->
+                </div>
+                <div class="names">
+                    <span class="first-names">Jitendra Malik</span>
+                    <!-- <span class="second-names">Malik</span> -->
+                </div>
             </div>
-        </div>
 
-        <!-- Navigation Links -->
-        <nav>
-            <ul>
-                <li><a href="explorer.html">Explore</a></li> <!-- Link to the Explore section on the same page -->
-                <li><a href="#paper">Paper</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="download.html">Download</a></li>
-                <li><a href="https://public.tableau.com/views/EgoSchema/EGOSchema?:showVizHome=no">Statistics</a></li>
-            </ul>
-        </nav>
+            <!-- Navigation Links -->
+            <nav>
+                <ul>
+                    <li><a href="#explore">Explore</a></li> <!-- Link to the Explore section on the same page -->
+                    <li><a href="#paper">Paper</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="https://public.tableau.com/views/EgoSchema/EGOSchema?:showVizHome=no">Statistics</a></li>
+                </ul>
+            </nav>
 
-        <div class="logo-container">
-            <img src="berkeley_logo/bair_logo.png" alt="Berkeley Logo" class="berkeley-logo">
-            <img src="berkeley_logo/bear_logo_3.png" alt="Berkeley Logo" class="berkeley-logo">
-        </div>
-    </header>
+            <div class="logo-container">
+                <img src="berkeley_logo/bair_logo.png" alt="Berkeley Logo" class="berkeley-logo">
+                <img src="berkeley_logo/bear_logo_3.png" alt="Berkeley Logo" class="berkeley-logo">
+            </div>
+        </header>
 
-    <!-- Explore Section
-    <section id="explore">
-        <div class="Explore title">Explore title</div>
-        <div id="frame_div">
-            <iframe src="plot.html" id="frame" frameBorder="0"></iframe>
-        <div>
-    </section> -->
+        <section id="explore">
+            <div class="header-top">
+                <div class="smaller-logo">Explore</div><br>
+            </div>
+            <iframe src="plot.html" class="plot" frameBorder="0"></iframe>
+        </section>
+
+        <section id="download">
+            <div class="header-top">
+                <div class="smaller-logo">Download dataset</div><br>
+            </div>
+            <div class="download_section">
+                <h1>Download</h1>
+                <p>in development</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            OverlayScrollbars(document.querySelectorAll("body"), { });
+        });
+    </script>
 
 </body>
 
