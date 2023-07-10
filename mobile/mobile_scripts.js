@@ -472,6 +472,7 @@ $(document).ready(function() {
     
 
     // Variables to keep track of the scroll
+    let startTouch = null;
     let lastTime = Date.now();
     let lastDelta = 0;
     let scrollSpeed = 0;
@@ -482,75 +483,62 @@ $(document).ready(function() {
       tl.timeScale(0); // Set timeScale to 0 to pause the animation
     }
 
-    // Mouse wheel event handler
-    function wheelHandler(e) {
-      // Calculate scroll speed
-      let currentTime = Date.now();
-      let deltaTime = currentTime - lastTime;
-      let delta = e.originalEvent.deltaY;
-
-      // Avoid division by zero
-      if (deltaTime !== 0) {
-        scrollSpeed = Math.abs(delta / deltaTime) / 2;
-      }
-
-      // Apply a function to the scroll speed to smooth out the animation speed
-      scrollSpeed = Math.sqrt(scrollSpeed);
-
-      // Apply a maximum speed limit to the animation
-      scrollSpeed = Math.min(scrollSpeed, 2);
-
-      lastTime = currentTime;
-      lastDelta = delta;
-
-      // Adjust animation speed based on scroll speed
-      tl.timeScale(scrollSpeed);
-
-      // Play or reverse animation based on scroll direction
-      if (delta < 0) {
-        // Scrolling up
-        tl.reverse();
-      } else {
-        // Scrolling down
-        tl.play();
-      }
-
-      //updateBackgroundPosition();
-
-      // Clear the previous timeout and set a new one
-      clearTimeout(wheelTimeout);
-      wheelTimeout = setTimeout(pauseAnimation, 200); // Pause the animation after 200ms of inactivity
+    /// Touch start event handler
+    function touchStartHandler(e) {
+        // Record the initial touch position
+        startTouch = e.touches[0].clientY;
     }
 
-    // Add mouse wheel event listener
-    $(window).on('wheel', wheelHandler);
+    // Touch move event handler
+    function touchMoveHandler(e) {
+        // Calculate the touch movement
+        let delta = startTouch - e.touches[0].clientY;
+        let currentTime = Date.now();
+        let deltaTime = currentTime - lastTime;
 
-    // Stop the animation when the mouse wheel is not in motion
-    $(window).on('wheelstop', function() {
-      clearTimeout(wheelTimeout);
-      if (scrollSpeed < 0.1) {
-        pauseAnimation();
-      }
-    });
+        // Avoid division by zero
+        if (deltaTime !== 0) {
+            scrollSpeed = Math.abs(delta / deltaTime) * 2;
+        }
 
-    // Custom event for when the mouse wheel stops
-    $.event.special.wheelstop = {
-      setup: function() {
-        $(this).on('wheel', function(e) {
-          let timer = $(this).data('timer');
-          if (timer) {
-            clearTimeout(timer);
-          }
-          $(this).data('timer', setTimeout(function() {
-            $(this).trigger('wheelstop');
-          }, 200)); // Stop the animation after 200ms of inactivity
-        });
-      },
-      teardown: function() {
-        $(this).off('wheel');
-        $(this).data('timer', null);
-      }
-    };
+        // Smooth out the animation speed
+        scrollSpeed = Math.sqrt(scrollSpeed);
+
+        // Apply a maximum speed limit to the animation
+        scrollSpeed = Math.min(scrollSpeed, 4);
+
+        lastTime = currentTime;
+        lastDelta = delta;
+
+        // Adjust animation speed based on scroll speed
+        tl.timeScale(scrollSpeed);
+
+        // Play or reverse animation based on touch movement direction
+        if (delta > 0) {
+            // Swiping down
+            tl.play();
+        } else {
+            // Swiping up
+            tl.reverse();
+        }
+
+        // Clear the previous timeout and set a new one
+        clearTimeout(wheelTimeout);
+        wheelTimeout = setTimeout(pauseAnimation, 200); // Pause the animation after 200ms of inactivity
+
+        // Update the initial touch position
+        startTouch = e.touches[0].clientY;
+    }
+
+    // Touch end event handler
+    function touchEndHandler() {
+        // Reset the initial touch position
+        startTouch = null;
+    }
+
+    document.addEventListener('touchstart', touchStartHandler, {passive: true});
+    document.addEventListener('touchmove', touchMoveHandler, {passive: true});
+    document.addEventListener('touchend', touchEndHandler, {passive: true});
 
     // Select the paper link in the navbar
     $('a[href="#paper"]').click(function(e) {
