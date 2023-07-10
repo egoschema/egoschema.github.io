@@ -1,0 +1,166 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f3f3;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.container_framed {
+    position: absolute;
+    top: 12.5vh;
+    left: 15vw;
+
+    width: 70vw;
+    height: 75vh;
+    border: 6px solid #ccc;
+}
+
+#video_div {
+    display: flex;
+    justify-content: center;
+    margin: 1.5vh;
+    margin-top: 8vh;
+}
+
+video {
+    width: calc(1.3333 * 40vh);
+    height: 40vh;
+
+    max-width: 80vw;
+
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.qa-body {
+    text-align: left;
+    padding: 0.7em;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    margin: 4vh;
+}
+
+.qa-body p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.7em;
+    margin-bottom: 0.7em;
+}
+
+.qa-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.qa-answers {
+    margin-left: 2em;
+    cursor: pointer;
+}
+
+.correct {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}
+
+p {
+    margin: 0;
+}
+
+
+p {
+    font-size: 75%;
+    line-height: 1.5vh;
+}
+
+#q {
+    font-weight: bold;
+}
+
+#helpButton {
+    position: absolute;
+    bottom: 1vh;
+    left: 1vw;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#helpButton:hover {
+    background-color: #555;
+}
+
+#backButton {
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#helpButton:hover {
+    background-color: #555;
+}
+
+#helpBox {
+    position: fixed;
+    bottom: 8vh;
+    left: 13vw;
+    width: 30vw;
+    padding: 2vh;
+    font-size: 60%;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: none;
+}
+
+#helpBox.show {
+    display: block;
+    opacity: 1;
+}
+
+#helpBox .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+#helpBox .close:hover {
+    color: #333;
+}
+
+#helpBox ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+
+#helpBox li {
+    margin-bottom: 10px;
+}

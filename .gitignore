@@ -1,5 +1,6 @@
-data
+explore_section/data
+prev
 html_playground
-notebooks
-website_builder.ipynb
+explore_section/notebooks
+explore_section/website_builder.ipynb
 .ipynb_checkpoints

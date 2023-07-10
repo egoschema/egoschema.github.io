@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Parameter Example</title>
+
+    <link rel="stylesheet" href="clip_styles.css">
+    <link rel="stylesheet" href="mobile/mobile_styles.css">
+</head>
+<body>
+    <div class="container_framed">
+        <div id="video_div">
+            <video controls="false">
+                <source src="https://drive.google.com/uc?export=view&id=1PqERbEceLHiO1bhBxqWxwuCUWp7XxAKt" type="video/mp4" id="video_embed">
+            </video>
+        </div>
+
+        <div class="qa-body" id="qa-body-1">
+            <p>
+                <span class="qa-label">Question</span>
+                <span class="qa-answers" id="q">What room was Wilson breaking into when House found him?</span>
+            </p>
+            <p class="answers" id="a0-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option A</span>
+                <span class="qa-answers" id="a0">What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?</span>
+            </p>
+            <p class="answers" id="a1-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option B</span>
+                <span class="qa-answers" id="a1">What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?</span>
+            </p>
+            <p class="answers" id="a2-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option C</span>
+                <span class="qa-answers" id="a2">What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?</span>
+            </p>
+            <p class="answers" id="a3-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option D</span>
+                <span class="qa-answers" id="a3">What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?</span>
+            </p>
+            <p class="answers" id="a4-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option E</span>
+                <span class="qa-answers" id="a4">What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?What room was Wilson breaking into when House found him?</span>
+            </p>
+        </div>
+
+
+        <button id="helpButton" onclick="toggleHelp()">Help</button>
+        <button id="backButton" onclick="back()">Back</button>
+
+        <div id="helpBox">
+            <span class="close" onclick="toggleHelp()">&times;</span>
+            <span class="qa-label">Some additional details</span>
+            <ul>
+                <li>Please click on the the text to reveal the correct answer</li>
+                <li>C refers to a camera wearer</li>
+                <!-- Add more steps as needed -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleHelp() {
+            var helpBox = document.getElementById('helpBox');
+            if (helpBox.classList.contains('show')) {
+                helpBox.classList.remove('show');
+            } else {
+                helpBox.classList.add('show');
+            }
+        }
+
+        function back() {
+            window.location.href = 'plot.html';
+        }
+    </script>
+</body>
+</html>

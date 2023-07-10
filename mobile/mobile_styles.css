@@ -1,0 +1,422 @@
+@media (max-aspect-ratio: 3 / 4) {
+
+  .header-top-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 12vh;
+    left: auto;
+
+    height: 20vh;
+    width: 90vw;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+    gap: 1em;
+
+    opacity: 0;
+
+    font-size: 2.5vw
+  }
+
+    /* Team Names Styling */
+  .team-names {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
+    position: absolute;
+    top: 21vh;
+    left: auto;
+
+    width: 60vw;
+    height: 40vh;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+    opacity: 0;
+    scale: 0.8;
+  }
+
+  .names {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    width: 60vw;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.625em;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-right: 0vw;
+    padding-left: 0vw;
+    flex-basis: calc(33.33% - 6.25em);
+
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
+
+  .first-names {
+    font-size: 4.5vh;
+  }
+
+  .team-names p {
+    margin: 0;
+  }
+
+  #navigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+
+    position: absolute;
+    bottom: -50vh;
+
+    height: 5vh;
+    width: 84vw;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+    padding: 1em;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 0.625em;
+  }
+
+    /* Navigation Link Styling */
+  #navigation a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 4vw;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .navigation_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 1.5vw;
+    margin-left: 1.5vw;
+  }
+
+  .logo-container {
+    position: absolute;
+    bottom: -50vh;
+  }
+
+  .berkeley-logo {
+    height: 10vh;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  #navigation-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
+    position: absolute;
+    top: 25vh;
+    left: -30vw;
+
+    width: 18vw;
+    height: 50vh;
+
+    padding: 1vw;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 0.625em;
+  }
+
+  #navigation-left a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 2vw;
+    transition: color 0.3s ease-in-out;
+
+    opacity: 0.5;
+  }
+
+  #navigation-left a:hover {
+    color: var(--accent-color);
+  }
+
+  .please-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 1vh;
+
+    opacity: 0.6;
+  }
+
+  #ellipse {
+      width: 3vh;
+      height: 5vh;
+      border: 3px solid #ffffff;
+      border-radius: 40%;
+      background: transparent;
+  }
+  #ellipse::before {
+      content: "";
+      position: absolute;
+      background: #ffffff;
+      width: 1vh;
+      height: 1vh;
+      border-radius: 50%;
+      left: 50%;
+      bottom: 40%;
+      transform: translate(-50%, -50%);
+  }
+
+  .please-scroll span {
+    font-size: 1em;
+  }
+
+  section {
+    height: 80vh;
+    width: 70vw;
+
+    position: absolute;
+    top: 100vh;
+    left: 24vw;
+  }
+
+  #paper {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Video Container Styling */
+  .video-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+
+    top: 0;
+    left: -10vw;
+
+    max-width: 68vw;
+    height: 20vh;
+  }
+
+  video {
+    max-width: 68vw;
+    height: 15vh;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+    opacity: 0;
+  }
+
+  #paper_intro {
+    position: absolute;
+
+    top: 20.5vh;
+    left: 3vw;
+
+    width: 64vw;
+    height: 21vw;
+  }
+
+  #paper_text {
+    font-size: 55%;
+  }
+
+  /* Paper Intro Styling */
+  #paper_list {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+
+    bottom: 32.5vw;
+    left: 0vw;
+
+    width: 62vw;
+    height: 12vh;
+  }
+
+  #screenshot_text {
+    font-weight: bold;
+    font-size: 2em;
+    border-bottom: 1px solid white;
+
+    opacity: 0;
+  }
+
+  #paper_screenshots a {
+    position: absolute;
+    left: -5vw;
+
+    margin-top: 1vh;
+
+    opacity: 0;
+  }
+
+  #paper_screenshots img {
+    height: 12vw;
+    width: 8.5vw;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+  }
+
+  #download{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 52vh;
+
+    font-weight: bold;
+    font-size: 4em;
+
+    opacity: 0;
+  }
+
+  #kartik{
+    position: absolute;
+
+    left: 100vw;
+    top: 0vh;
+
+    opacity: 0;
+  }
+
+  #raiymbek{
+    position: absolute;
+
+    left: 100vw;
+    top: 24vh;
+
+    opacity: 0;
+  }
+
+  #malik{
+    position: absolute;
+
+    left: 100vw;
+    top: 48vh;
+    
+    opacity: 0;
+  }
+
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 44vw;
+    height: 20vh;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+
+    padding: 1vw;
+  }
+
+  .portrait {
+    height: 6em;
+    width: 6em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+
+  .name a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 100%;
+    transition: color 0.3s ease-in-out;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+
+  .name a:hover {
+    color: var(--accent-color);
+  }
+
+  .status {
+    font-size: 40%;
+
+    opacity: 0.7;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+
+  .organization{
+    font-size: 60%;
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+
+
+  /* Plot Styling */
+  .plot {
+    width: 70vw;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1.5em;
+  }
+
+  /* Scroll to Top Button Styling */
+  #goToTop {
+    display: inline;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    background-color: #f8f9fa;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+    text-decoration: none;
+    opacity: 0;
+  }
+
+  #goToTop:hover {
+    opacity: 0.8;
+  }
+}

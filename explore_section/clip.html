@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Parameter Example</title>
+
+    <link rel="stylesheet" href="clip_styles.css">
+    <link rel="stylesheet" href="mobile/mobile_styles.css">
+</head>
+<body>
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function revealAnswer(answer_index) {
+            document.getElementById("a" + answer_index + "-label").classList.add("correct");
+            for (let i = 0; i < 5; i++) {
+                if (i !== answer_index) {
+                    document.getElementById("a" + i + "-label").classList.add("wrong");
+                }
+            }
+        }
+
+        var params = new URLSearchParams(window.location.search);
+        var myUrl = params.get('param1');
+        var q = params.get('param2');
+        var a = params.get('param3');
+        var wa = params.get('param4');
+        var wb = params.get('param5');
+        var wc = params.get('param6');
+        var wd = params.get('param7');
+
+        var correct_index = getRandomInt(5);
+        var arr = [wa, wb, wc, wd];
+        arr.splice(correct_index, 0, a);
+
+        document.getElementById('video_embed').src = myUrl;
+
+        var qElement = document.getElementById('q');
+        qElement.textContent = q;
+
+        for (let i = 0; i < 5; i++) {
+            var aElement = document.getElementById('a' + i);
+            aElement.textContent = arr[i];
+        }
+    </script>
+
+    <div class="container">
+        <div id="video_div">
+            <video controls="false">
+                <source src="https://drive.google.com/uc?export=view&id=1PqERbEceLHiO1bhBxqWxwuCUWp7XxAKt" type="video/mp4" id="video_embed">
+            </video>
+        </div>
+
+        <div class="qa-body" id="qa-body-1">
+            <p>
+                <span class="qa-label">Question</span>
+                <span class="qa-answers" id="q">What room was Wilson breaking into when House found him?</span>
+            </p>
+            <p class="answers" id="a0-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option A</span>
+                <span class="qa-answers" id="a0">The bedroom.</span>
+            </p>
+            <p class="answers" id="a1-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option B</span>
+                <span class="qa-answers" id="a1">The bathroom.</span>
+            </p>
+            <p class="answers" id="a2-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option C</span>
+                <span class="qa-answers" id="a2">The living room.</span>
+            </p>
+            <p class="answers" id="a3-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option D</span>
+                <span class="qa-answers" id="a3">The kitchen.</span>
+            </p>
+            <p class="answers" id="a4-label" onclick="revealAnswer(correct_index);">
+                <span class="qa-label">Option E</span>
+                <span class="qa-answers" id="a4">The dining room.</span>
+            </p>
+        </div>
+
+
+        <button id="helpButton" onclick="toggleHelp()">Help</button>
+        <button id="backButton" onclick="back()">Back</button>
+
+        <div id="helpBox">
+            <span class="close" onclick="toggleHelp()">&times;</span>
+            <span class="qa-label">Some additional details</span>
+            <ul>
+                <li>Please click on the the text to reveal the correct answer</li>
+                <li>C refers to a camera wearer</li>
+                <!-- Add more steps as needed -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function toggleHelp() {
+            var helpBox = document.getElementById('helpBox');
+            if (helpBox.classList.contains('show')) {
+                helpBox.classList.remove('show');
+            } else {
+                helpBox.classList.add('show');
+            }
+        }
+
+        function back() {
+            window.location.href = 'plot.html';
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function revealAnswer(answer_index) {
+            document.getElementById("a" + answer_index + "-label").classList.add("correct");
+            for (let i = 0; i < 5; i++) {
+                if (i !== answer_index) {
+                    document.getElementById("a" + i + "-label").classList.add("wrong");
+                }
+            }
+        }
+
+        var params = new URLSearchParams(window.location.search);
+        var myUrl = params.get('param1');
+        var q = params.get('param2');
+        var a = params.get('param3');
+        var wa = params.get('param4');
+        var wb = params.get('param5');
+        var wc = params.get('param6');
+        var wd = params.get('param7');
+
+        var correct_index = getRandomInt(5);
+        var arr = [wa, wb, wc, wd];
+        arr.splice(correct_index, 0, a);
+
+        document.getElementById('video_embed').src = myUrl;
+
+        var qElement = document.getElementById('q');
+        qElement.textContent = q;
+
+        for (let i = 0; i < 5; i++) {
+            var aElement = document.getElementById('a' + i);
+            aElement.textContent = arr[i];
+        }
+    </script>
+</body>
+</html>
