@@ -286,7 +286,7 @@ section {
   height: 21vw;
 }
 
-video {
+#intro_video {
   width: 12.5vw;
   height: 7vw;
   border-radius: 10px;

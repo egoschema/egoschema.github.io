@@ -173,13 +173,13 @@ $(document).ready(function() {
 
       tl.staggerTo(text.children, 0.05, {opacity: 1}, 0.005);
 
-      tl.to('video', {
+      tl.to('#intro_video', {
         opacity: 1,
         duration: 1
       }, startTime);
 
       // Start of the paper
-      tl.to('video', {
+      tl.to('#intro_video', {
         width: 'auto',
         height: '20vh',
         duration: 1.5

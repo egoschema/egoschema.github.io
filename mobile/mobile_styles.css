@@ -223,7 +223,7 @@
     height: 20vh;
   }
 
-  video {
+  #intro_video {
     max-width: 68vw;
     height: 15vh;
     width: auto;
