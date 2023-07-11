@@ -434,6 +434,67 @@ $(document).ready(function() {
       }, startTime);
     }
 
+    function stats_appear(tl, startTime, durationTime){
+      tl.to('#navigation-left #stats_nav a', {
+        fontSize: '4vw',
+        opacity: 1,
+        duration: 0.5
+      }, startTime);
+
+      // Animate the download section moving up
+      tl.to('#stats', {
+        top: '25vh',
+        duration: durationTime,
+        zIndex: 1,
+        onComplete: function() {
+          if (!skipDownloadOnComplete) {
+            $(window).off('wheel'); // Turn off the mouse wheel listener
+            pauseAnimation();
+            setTimeout(function() {
+              // Wait for one second
+              $(window).on('wheel', wheelHandler); // Turn on the mouse wheel listener again
+            }, 500);
+          }
+        }
+      }, startTime);
+    }
+
+
+    function stats_stay(tl, startTime, durationTime){
+      tl.to('#stats', {
+        opacity: 1,
+        duration: 1
+      }, startTime);
+
+      tl.to('#stats', {
+        opacity: 1,
+        duration: durationTime - 1
+      }, startTime + 1);
+    }
+
+    function stats_disappear(tl, startTime, durationTime){
+      tl.to('#stats', {
+        top: '-100vh',
+        duration: durationTime
+      }, startTime);
+
+      tl.to('#stats', {
+        opacity: 0,
+        duration: 0.5
+      }, startTime);
+
+      tl.to('#stats', {
+        zIndex: 0,
+        duration: 0.1
+      }, startTime);
+
+      tl.to('#navigation-left #stats_nav a', {
+        fontSize: '2vw',
+        opacity: 0.5,
+        duration: durationTime
+      }, startTime);
+    }
+
 
     // Create a GSAP timeline
     tl = gsap.timeline({
@@ -466,8 +527,13 @@ $(document).ready(function() {
     download_stay(tl, 14, 2);
 
     download_disappear(tl, 16, 1);
+    stats_appear(tl, 17, 1);
 
-    background(tl, 0.5, 17.5);
+    stats_stay(tl, 18, 2);
+
+    stats_disappear(tl, 20, 1);
+
+    background(tl, 0.5, 20.5);
 
     
 
@@ -540,6 +606,76 @@ $(document).ready(function() {
     document.addEventListener('touchmove', touchMoveHandler, {passive: true});
     document.addEventListener('touchend', touchEndHandler, {passive: true});
 
+    // Mouse wheel event handler
+    function wheelHandler(e) {
+      // Calculate scroll speed
+      let currentTime = Date.now();
+      let deltaTime = currentTime - lastTime;
+      let delta = e.originalEvent.deltaY;
+
+      // Avoid division by zero
+      if (deltaTime !== 0) {
+        scrollSpeed = Math.abs(delta / deltaTime) / 2;
+      }
+
+      // Apply a function to the scroll speed to smooth out the animation speed
+      scrollSpeed = Math.sqrt(scrollSpeed);
+
+      // Apply a maximum speed limit to the animation
+      scrollSpeed = Math.min(scrollSpeed, 2);
+
+      lastTime = currentTime;
+      lastDelta = delta;
+
+      // Adjust animation speed based on scroll speed
+      tl.timeScale(scrollSpeed);
+
+      // Play or reverse animation based on scroll direction
+      if (delta < 0) {
+        // Scrolling up
+        tl.reverse();
+      } else {
+        // Scrolling down
+        tl.play();
+      }
+
+      //updateBackgroundPosition();
+
+      // Clear the previous timeout and set a new one
+      clearTimeout(wheelTimeout);
+      wheelTimeout = setTimeout(pauseAnimation, 200); // Pause the animation after 200ms of inactivity
+    }
+
+    // Add mouse wheel event listener
+    $(window).on('wheel', wheelHandler);
+
+    // Stop the animation when the mouse wheel is not in motion
+    $(window).on('wheelstop', function() {
+      clearTimeout(wheelTimeout);
+      if (scrollSpeed < 0.1) {
+        pauseAnimation();
+      }
+    });
+
+    // Custom event for when the mouse wheel stops
+    $.event.special.wheelstop = {
+      setup: function() {
+        $(this).on('wheel', function(e) {
+          let timer = $(this).data('timer');
+          if (timer) {
+            clearTimeout(timer);
+          }
+          $(this).data('timer', setTimeout(function() {
+            $(this).trigger('wheelstop');
+          }, 200)); // Stop the animation after 200ms of inactivity
+        });
+      },
+      teardown: function() {
+        $(this).off('wheel');
+        $(this).data('timer', null);
+      }
+    };
+
     // Select the paper link in the navbar
     $('a[href="#paper"]').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #paper)
@@ -563,6 +699,12 @@ $(document).ready(function() {
       e.preventDefault(); // Prevent the default action (navigating to #download)
 
       gsap.to(tl, {progress: 16 / tl.totalDuration(), duration: Math.abs(16 - tl.time()) / 2, ease: "power1.inOut"});
+    });
+
+    $('a[href="#stats"]').click(function(e) {
+      e.preventDefault(); // Prevent the default action (navigating to #download)
+
+      gsap.to(tl, {progress: 20 / tl.totalDuration(), duration: Math.abs(20 - tl.time()) / 2, ease: "power1.inOut"});
     });
 
     $('#goToTop').click(function(e) {

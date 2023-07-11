@@ -392,6 +392,19 @@
     padding-bottom: 1.5em;
   }
 
+  #stats {
+    width: 1600px;
+    height: 2400px;
+    display: flex;
+  }
+
+  .stats_plot {
+    width: 1600px;
+    height: 2400px;
+
+    transform-origin: top left;
+  }
+
   /* Scroll to Top Button Styling */
   #goToTop {
     display: inline;

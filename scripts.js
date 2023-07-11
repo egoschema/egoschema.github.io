@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  let ratio = 0.7 * screen.width / 1600;
+
+  document.getElementById("stats_id").style.transform = "scale(" + ratio + ")";
+
   if (screen.width / screen.height >  3 / 4) {
     // GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
@@ -381,7 +385,6 @@ $(document).ready(function() {
       }, startTime);
     }
 
-
     function download_appear(tl, startTime, durationTime){
       tl.to('#navigation-left #download_nav a', {
         fontSize: '4vw',
@@ -443,6 +446,67 @@ $(document).ready(function() {
       }, startTime);
     }
 
+    function stats_appear(tl, startTime, durationTime){
+      tl.to('#navigation-left #stats_nav a', {
+        fontSize: '4vw',
+        opacity: 1,
+        duration: 0.5
+      }, startTime);
+
+      // Animate the download section moving up
+      tl.to('#stats', {
+        top: '25vh',
+        duration: durationTime,
+        zIndex: 1,
+        onComplete: function() {
+          if (!skipDownloadOnComplete) {
+            $(window).off('wheel'); // Turn off the mouse wheel listener
+            pauseAnimation();
+            setTimeout(function() {
+              // Wait for one second
+              $(window).on('wheel', wheelHandler); // Turn on the mouse wheel listener again
+            }, 500);
+          }
+        }
+      }, startTime);
+    }
+
+
+    function stats_stay(tl, startTime, durationTime){
+      tl.to('#stats', {
+        opacity: 1,
+        duration: 1
+      }, startTime);
+
+      tl.to('#stats', {
+        opacity: 1,
+        duration: durationTime - 1
+      }, startTime + 1);
+    }
+
+    function stats_disappear(tl, startTime, durationTime){
+      tl.to('#stats', {
+        top: '-100vh',
+        duration: durationTime
+      }, startTime);
+
+      tl.to('#stats', {
+        opacity: 0,
+        duration: 0.5
+      }, startTime);
+
+      tl.to('#stats', {
+        zIndex: 0,
+        duration: 0.1
+      }, startTime);
+
+      tl.to('#navigation-left #stats_nav a', {
+        fontSize: '2vw',
+        opacity: 0.5,
+        duration: durationTime
+      }, startTime);
+    }
+
 
     // Create a GSAP timeline
     tl = gsap.timeline({
@@ -475,8 +539,13 @@ $(document).ready(function() {
     download_stay(tl, 14, 2);
 
     download_disappear(tl, 16, 1);
+    stats_appear(tl, 17, 1);
 
-    background(tl, 0.5, 17.5);
+    stats_stay(tl, 18, 2);
+
+    stats_disappear(tl, 20, 1);
+
+    background(tl, 0.5, 20.5);
 
     
 
@@ -584,6 +653,11 @@ $(document).ready(function() {
       e.preventDefault(); // Prevent the default action (navigating to #download)
 
       gsap.to(tl, {progress: 16 / tl.totalDuration(), duration: Math.abs(16 - tl.time()) / 2, ease: "power1.inOut"});
+    });
+    $('a[href="#stats"]').click(function(e) {
+      e.preventDefault(); // Prevent the default action (navigating to #download)
+
+      gsap.to(tl, {progress: 20 / tl.totalDuration(), duration: Math.abs(20 - tl.time()) / 2, ease: "power1.inOut"});
     });
 
     $('#goToTop').click(function(e) {
