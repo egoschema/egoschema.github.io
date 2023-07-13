@@ -479,24 +479,26 @@ $(document).ready(function() {
     let lastDelta = 0;
     let scrollSpeed = 0;
     let startTouch = null;
+    let inactiveTime = 0;
     let wheelTimeout;
+    let touchTimeout;
 
     gsap.to(tl, {progress: 1, duration: 10, ease: "power1.inOut"}, 0);
     gsap.to(tl, {
       progress: 0, 
       duration: 1,
       ease: "power1.inOut", 
-    }, 11);
+    }, 10);
     gsap.to('#loading-screen', {
       opacity: 0,
       zIndex: -99,
       duration: 0.5,
       ease: "power1.inOut", 
       onComplete: function() {
-        //const loadScreen = document.getElementById('loading-screen');
+        const loadScreen = document.getElementById('loading-screen');
         loadScreen.style.display = 'none';
       }
-    }, 12);
+    }, 11);
 
     gsap.to('.header-top', {
       opacity: 1,
@@ -507,7 +509,7 @@ $(document).ready(function() {
         start_mouse();
         start_touch();
       }
-    }, 12.5);
+    }, 11.5);
 
     
     function start_mouse() {
@@ -554,6 +556,28 @@ $(document).ready(function() {
       tl.timeScale(0); // Set timeScale to 0 to pause the animation
     }
 
+    function pauseSlowly() {
+      // Increment inactive time
+      inactiveTime += 100;
+
+      // Calculate eased progress 0-1
+      let progress = Math.min(1, inactiveTime / 1000);
+
+      // Calculate scaled timeScale based on progress
+      let scale = 1 - progress;
+
+      // Apply new timeScale value
+      tl.timeScale(scale);
+
+      // If fully paused, stop playback
+      if (progress >= 0.9) {
+        tl.timeScale(0);
+        inactiveTime = 0;
+      } else {
+        pauseSlowly();
+      }
+    }
+
     /// Touch start event handler
     function touchStartHandler(e) {
         // Record the initial touch position
@@ -588,13 +612,14 @@ $(document).ready(function() {
             tl.play();
         } else {
             // Swiping up
-            tl.timeScale(2 * scrollSpeed);
+            tl.timeScale(scrollSpeed);
             tl.reverse();
         }
 
         // Clear the previous timeout and set a new one
-        clearTimeout(wheelTimeout);
-        wheelTimeout = setTimeout(pauseAnimation, 200); // Pause the animation after 200ms of inactivity
+        clearTimeout(touchTimeout);
+        inactiveTime = 0;
+        touchTimeout = setTimeout(pauseSlowly, 1000); // Pause the animation after 200ms of inactivity
 
         // Update the initial touch position
         startTouch = e.touches[0].clientY;
