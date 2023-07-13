@@ -72,17 +72,7 @@ $(document).ready(function() {
       tl.to('.logo-container', {
         top: '78vh',
         zIndex: 1,
-        duration: durationTime,
-        onComplete: function() {
-          if (!skipLandingOnComplete) {
-            $(window).off('wheel'); // Turn off the mouse wheel listener
-            pauseAnimation();
-            setTimeout(function() {
-              // Wait for one second
-              $(window).on('wheel', wheelHandler); // Turn on the mouse wheel listener again
-            }, 100);
-          }
-        }
+        duration: durationTime
       }, startTime);
     }
 
@@ -138,17 +128,7 @@ $(document).ready(function() {
       tl.to('#paper', {
         top: '25vh',
         duration: durationTime,
-        zIndex: 1,
-        onComplete: function() {
-          if (!skipPaperOnComplete) {
-            $(window).off('wheel'); // Turn off the mouse wheel listener
-            pauseAnimation();
-            setTimeout(function() {
-              // Wait for one second
-              $(window).on('wheel', wheelHandler); // Turn on the mouse wheel listener again
-            }, 50);
-          }
-        }
+        zIndex: 1
       }, startTime);
     }
 
@@ -249,17 +229,7 @@ $(document).ready(function() {
       tl.to('#team', {
         top: '25vh',
         duration: durationTime,
-        zIndex: 1,
-        onComplete: function() {
-          if (!skipTeamOnComplete) {
-            $(window).off('wheel'); // Turn off the mouse wheel listener
-            pauseAnimation();
-            setTimeout(function() {
-              // Wait for one second
-              $(window).on('wheel', wheelHandler); // Turn on the mouse wheel listener again
-            }, 50);
-          }
-        }
+        zIndex: 1
       }, startTime);
     }
 
@@ -340,17 +310,7 @@ $(document).ready(function() {
       tl.to('#explore', {
         top: '20vh',
         duration: durationTime,
-        zIndex: 1,
-        onComplete: function() {
-          if (!skipExploreOnComplete) {
-            $(window).off('wheel'); // Turn off the mouse wheel listener
-            pauseAnimation();
-            setTimeout(function() {
-              // Wait for one second
-              $(window).on('wheel', wheelHandler); // Turn on the mouse wheel listener again
-            }, 50);
-          }
-        }
+        zIndex: 1
       }, startTime);
     }
 
@@ -396,17 +356,7 @@ $(document).ready(function() {
       tl.to('#download', {
         top: '25vh',
         duration: durationTime,
-        zIndex: 1,
-        onComplete: function() {
-          if (!skipDownloadOnComplete) {
-            $(window).off('wheel'); // Turn off the mouse wheel listener
-            pauseAnimation();
-            setTimeout(function() {
-              // Wait for one second
-              $(window).on('wheel', wheelHandler); // Turn on the mouse wheel listener again
-            }, 500);
-          }
-        }
+        zIndex: 1
       }, startTime);
     }
 
@@ -457,17 +407,7 @@ $(document).ready(function() {
       tl.to('#stats', {
         top: '25vh',
         duration: durationTime,
-        zIndex: 1,
-        onComplete: function() {
-          if (!skipDownloadOnComplete) {
-            $(window).off('wheel'); // Turn off the mouse wheel listener
-            pauseAnimation();
-            setTimeout(function() {
-              // Wait for one second
-              $(window).on('wheel', wheelHandler); // Turn on the mouse wheel listener again
-            }, 500);
-          }
-        }
+        zIndex: 1
       }, startTime);
     }
 
@@ -547,13 +487,70 @@ $(document).ready(function() {
 
     background(tl, 0.5, 20.5);
 
-    
-
-    // Variables to keep track of the scroll
     let lastTime = Date.now();
     let lastDelta = 0;
     let scrollSpeed = 0;
     let wheelTimeout;
+
+    gsap.to(tl, {progress: 1, duration: 5, ease: "power1.inOut"}, 0);
+    gsap.to(tl, {
+      progress: 0, 
+      duration: 1,
+      ease: "power1.inOut", 
+    }, 5);
+    gsap.to('#loading-screen', {
+      opacity: 0,
+      zIndex: -99,
+      duration: 0.5,
+      ease: "power1.inOut", 
+      onComplete: function() {
+        //const loadScreen = document.getElementById('loading-screen');
+        loadScreen.style.display = 'none';
+      }
+    }, 6);
+
+    gsap.to('.header-top', {
+      opacity: 1,
+      duration: 1,
+      ease: "power1.inOut", 
+      onComplete: function() {
+        //const loadScreen = document.getElementById('loading-screen');
+        start_mouse(tl);
+      }
+    }, 6.5);
+    
+    function start_mouse(tl) {
+      tl.resume();
+      // Add mouse wheel event listener
+      $(window).on('wheel', wheelHandler);
+
+      //Stop the animation when the mouse wheel is not in motion
+      $(window).on('wheelstop', function() {
+        clearTimeout(wheelTimeout);
+        if (scrollSpeed < 0.1) {
+          pauseAnimation();
+        }
+      });
+
+      // Custom event for when the mouse wheel stops
+      $.event.special.wheelstop = {
+        setup: function() {
+          $(this).on('wheel', function(e) {
+            let timer = $(this).data('timer');
+            if (timer) {
+              clearTimeout(timer);
+            }
+            $(this).data('timer', setTimeout(function() {
+              $(this).trigger('wheelstop');
+            }, 200)); // Stop the animation after 200ms of inactivity
+          });
+        },
+        teardown: function() {
+          $(this).off('wheel');
+          $(this).data('timer', null);
+        }
+      };
+    }
 
     // Function to pause the animation
     function pauseAnimation() {
@@ -569,7 +566,7 @@ $(document).ready(function() {
 
       // Avoid division by zero
       if (deltaTime !== 0) {
-        scrollSpeed = Math.abs(delta / deltaTime) / 2;
+        scrollSpeed = Math.abs(delta / deltaTime);
       }
 
       // Apply a function to the scroll speed to smooth out the animation speed
@@ -581,15 +578,14 @@ $(document).ready(function() {
       lastTime = currentTime;
       lastDelta = delta;
 
-      // Adjust animation speed based on scroll speed
-      tl.timeScale(scrollSpeed);
-
       // Play or reverse animation based on scroll direction
       if (delta < 0) {
         // Scrolling up
+        tl.timeScale(2 * scrollSpeed);
         tl.reverse();
       } else {
         // Scrolling down
+        tl.timeScale(scrollSpeed);
         tl.play();
       }
 
@@ -600,70 +596,40 @@ $(document).ready(function() {
       wheelTimeout = setTimeout(pauseAnimation, 200); // Pause the animation after 200ms of inactivity
     }
 
-    // Add mouse wheel event listener
-    $(window).on('wheel', wheelHandler);
-
-    // Stop the animation when the mouse wheel is not in motion
-    $(window).on('wheelstop', function() {
-      clearTimeout(wheelTimeout);
-      if (scrollSpeed < 0.1) {
-        pauseAnimation();
-      }
-    });
-
-    // Custom event for when the mouse wheel stops
-    $.event.special.wheelstop = {
-      setup: function() {
-        $(this).on('wheel', function(e) {
-          let timer = $(this).data('timer');
-          if (timer) {
-            clearTimeout(timer);
-          }
-          $(this).data('timer', setTimeout(function() {
-            $(this).trigger('wheelstop');
-          }, 200)); // Stop the animation after 200ms of inactivity
-        });
-      },
-      teardown: function() {
-        $(this).off('wheel');
-        $(this).data('timer', null);
-      }
-    };
-
     // Select the paper link in the navbar
     $('a[href="#paper"]').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #paper)
 
-      gsap.to(tl, {progress: 5 / tl.totalDuration(), duration: Math.abs(5 - tl.time()) / 2, ease: "power1.inOut"});
+      gsap.to(tl, {progress: 5 / tl.totalDuration(), duration: Math.abs(5 - tl.time()) / 3, ease: "power1.inOut"});
     });
 
     $('a[href="#team"]').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #download)
 
-      gsap.to(tl, {progress: 10 / tl.totalDuration(), duration: Math.abs(10 - tl.time()) / 2, ease: "power1.inOut"});
+      gsap.to(tl, {progress: 10 / tl.totalDuration(), duration: Math.abs(10 - tl.time()) / 3, ease: "power1.inOut"});
     });
 
     $('a[href="#explore"]').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #download)
 
-      gsap.to(tl, {progress: 12 / tl.totalDuration(), duration: Math.abs(12 - tl.time()) / 2, ease: "power1.inOut"});
+      gsap.to(tl, {progress: 12 / tl.totalDuration(), duration: Math.abs(12 - tl.time()) / 3, ease: "power1.inOut"});
     });
 
     $('a[href="#download"]').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #download)
 
-      gsap.to(tl, {progress: 16 / tl.totalDuration(), duration: Math.abs(16 - tl.time()) / 2, ease: "power1.inOut"});
+      gsap.to(tl, {progress: 16 / tl.totalDuration(), duration: Math.abs(16 - tl.time()) / 3, ease: "power1.inOut"});
     });
     $('a[href="#stats"]').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #download)
 
-      gsap.to(tl, {progress: 20 / tl.totalDuration(), duration: Math.abs(20 - tl.time()) / 2, ease: "power1.inOut"});
+      gsap.to(tl, {progress: 20 / tl.totalDuration(), duration: Math.abs(20 - tl.time()) / 3, ease: "power1.inOut"});
     });
 
     $('#goToTop').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #top)
 
-      gsap.to(tl, {progress: 1 / tl.totalDuration(), duration: Math.abs(1 - tl.time()) / 2, ease: "power1.inOut"});
+      gsap.to(tl, {progress: 1 / tl.totalDuration(), duration: Math.abs(1 - tl.time()) / 3, ease: "power1.inOut"});
     });
   }
 });

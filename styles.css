@@ -31,6 +31,76 @@ body {
   background-color: var(--secondary-color);
 }
 
+#loading-screen {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-image: url('background.png');
+  background-repeat: repeat;
+  background-position: -50vw calc(50vh - 75vw);
+  background-size: 200vw 150vw;
+  background-color: var(--secondary-color);
+}
+
+.header-top-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 40vh;
+  left: auto;
+  height: 10vh;
+  width: 100vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+/* Logo Styling */
+.logo-screen {
+  font-size: 4vw;
+}
+
+.loading-bar-outline {
+  height: 2vh;
+  width: 60vw;
+
+  position: absolute;
+  top: 55vh;
+  left: auto;
+  border-radius: 15px;
+
+  border: solid white;
+}
+
+.loading-bar {
+  height: 100%;
+  width: 0%;
+  background-color: white;
+  
+  animation: load 6s linear forwards;
+  border-radius: 10px;
+
+  opacity:0.5;
+}
+
+@keyframes load {
+  from {
+    width: 0%;
+  }
+  to {  
+    width: 100%;
+  }
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -67,6 +137,8 @@ header a:hover {
   width: 100vw;
   margin-top: 1vh;
   margin-bottom: 1vh;
+
+  opacity: 0;
 }
 
 /* Logo Styling */
