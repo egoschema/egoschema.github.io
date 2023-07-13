@@ -481,12 +481,12 @@ $(document).ready(function() {
     let startTouch = null;
     let wheelTimeout;
 
-    gsap.to(tl, {progress: 1, duration: 5, ease: "power1.inOut"}, 0);
+    gsap.to(tl, {progress: 1, duration: 10, ease: "power1.inOut"}, 0);
     gsap.to(tl, {
       progress: 0, 
       duration: 1,
       ease: "power1.inOut", 
-    }, 5);
+    }, 11);
     gsap.to('#loading-screen', {
       opacity: 0,
       zIndex: -99,
@@ -496,7 +496,7 @@ $(document).ready(function() {
         //const loadScreen = document.getElementById('loading-screen');
         loadScreen.style.display = 'none';
       }
-    }, 6);
+    }, 12);
 
     gsap.to('.header-top', {
       opacity: 1,
@@ -507,7 +507,7 @@ $(document).ready(function() {
         start_mouse();
         start_touch();
       }
-    }, 6.5);
+    }, 12.5);
 
     
     function start_mouse() {
@@ -580,15 +580,15 @@ $(document).ready(function() {
 
         lastTime = currentTime;
         lastDelta = delta;
-
-        tl.timeScale(scrollSpeed);
   
         // Play or reverse animation based on touch movement direction
         if (delta > 0) {
             // Swiping down
+            tl.timeScale(scrollSpeed);
             tl.play();
         } else {
             // Swiping up
+            tl.timeScale(2 * scrollSpeed);
             tl.reverse();
         }
 
@@ -615,7 +615,7 @@ $(document).ready(function() {
 
       // Avoid division by zero
       if (deltaTime !== 0) {
-        scrollSpeed = Math.abs(delta / deltaTime) / 2;
+        scrollSpeed = Math.abs(delta / deltaTime);
       }
 
       // Apply a function to the scroll speed to smooth out the animation speed
@@ -630,13 +630,15 @@ $(document).ready(function() {
       // Adjust animation speed based on scroll speed
       tl.timeScale(scrollSpeed);
 
-      // Play or reverse animation based on scroll direction
-      if (delta < 0) {
-        // Scrolling up
-        tl.reverse();
+      // Play or reverse animation based on touch movement direction
+      if (delta > 0) {
+          // Swiping down
+          tl.timeScale(scrollSpeed);
+          tl.play();
       } else {
-        // Scrolling down
-        tl.play();
+          // Swiping up
+          tl.timeScale(2 * scrollSpeed);
+          tl.reverse();
       }
 
       //updateBackgroundPosition();
