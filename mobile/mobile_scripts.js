@@ -593,7 +593,7 @@ $(document).ready(function() {
 
         // Avoid division by zero
         if (deltaTime !== 0) {
-            scrollSpeed = Math.abs(delta / deltaTime) * 2;
+            scrollSpeed = Math.abs(delta / deltaTime) * 1.5;
         }
 
         // Smooth out the animation speed
@@ -689,19 +689,19 @@ $(document).ready(function() {
     $('a[href="#explore"]').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #download)
 
-      gsap.to(tl, {progress: 12 / tl.totalDuration(), duration: Math.abs(12 - tl.time()) / 4, ease: "power1.inOut"});
+      gsap.to(tl, {progress: 13 / tl.totalDuration(), duration: Math.abs(13 - tl.time()) / 4, ease: "power1.inOut"});
     });
 
     $('a[href="#download"]').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #download)
 
-      gsap.to(tl, {progress: 16 / tl.totalDuration(), duration: Math.abs(16 - tl.time()) / 4, ease: "power1.inOut"});
+      gsap.to(tl, {progress: 15 / tl.totalDuration(), duration: Math.abs(15 - tl.time()) / 4, ease: "power1.inOut"});
     });
 
     $('a[href="#stats"]').click(function(e) {
       e.preventDefault(); // Prevent the default action (navigating to #download)
 
-      gsap.to(tl, {progress: 20 / tl.totalDuration(), duration: Math.abs(20 - tl.time()) / 4, ease: "power1.inOut"});
+      gsap.to(tl, {progress: 18 / tl.totalDuration(), duration: Math.abs(18 - tl.time()) / 4, ease: "power1.inOut"});
     });
 
     $('#goToTop').click(function(e) {
