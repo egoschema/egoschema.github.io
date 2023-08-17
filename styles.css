@@ -168,7 +168,7 @@ header a:hover {
   justify-content: center;
 
   position: absolute;
-  top: 30vh;
+  top: 25vh;
   left: auto;
 
   height: 10vh;
@@ -425,15 +425,27 @@ section {
 
 #download{
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 52vh;
-
-  font-weight: bold;
-  font-size: 4em;
-
+  flex-direction: column;
   opacity: 0;
+  gap: 5vh;
+}
+
+/* Navigation Link Styling */
+#download a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+#download  p {
+  font-weight: 600;
+  font-size: 270%;
+  margin: 0;
+}
+
+#download  span {
+  opacity: 0.6;
+  font-size: 110%;
 }
 
 #kartik{

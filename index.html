@@ -27,8 +27,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 
-
-
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="styles.css">
   <script src="scripts.js"></script>
@@ -84,6 +82,9 @@
         </div>
         <div class="navigation_div" id="stat_nav">
             <a href="#stats">Statistics</a>
+        </div>
+        <div class="navigation_div" id="git_nav">
+            <a href="https://github.com/egoschema/egoschema">Github</a>
         </div>
       </nav>
 
@@ -146,8 +147,24 @@
 
     <!-- Download Section -->
     <section id="download">
-      <div class="download_section">
-        <p>To be released soon</p>
+      <div class="download_part" id="video_instructions">
+        <p class="download_intro">Download script</p>
+        <span class="download_description">You can download the dataset by running the script at the <a href="https://github.com/egoschema/EgoSchema.git">following link</a>.<span>
+      </div>
+
+      <div class="download_part" id="drive_instructions">
+        <p class="download_intro">Direct download</p>
+        <span class="download_description">Folder with all videos is also hosted in <a href="https://drive.google.com/drive/folders/1SS0VVz8rML1e5gWq7D7VtP1oxE2UtmhQ?usp=sharing">google drive</a>.<span>
+      </div>
+
+      <div class="download_part" id="ego4d_instructions">
+        <p class="download_intro">Ego4D metadata</p>
+        <span class="download_description">The file that connect EgoSchema questions to Ego4D original metadata can be found <a href="https://github.com/egoschema/EgoSchema.git">here</a>.<span> (in development)
+      </div>
+
+      <div class="download_part" id="bench_instructions">
+        <p class="download_intro">Benchmarking code</p>
+        <span class="download_description">Comprehensive guides and setup procedures for benchmarking models from the paper can be found <a href="https://github.com/egoschema/EgoSchema/tree/main/benchmarking">here</a>.<span>
       </div>
     </section>
 
