@@ -404,6 +404,19 @@ section {
   opacity: 0;
 }
 
+#screenshot_text a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 2vw;
+  transition: color 0.3s ease-in-out;
+}
+
+#screenshot_text a:hover {
+  color: var(--accent-color);
+}
+
+
 #paper_screenshots a {
   position: absolute;
   left: -5vw;
@@ -415,6 +428,12 @@ section {
 
   opacity: 0;
 }
+
+#paper_screenshots a:hover {
+  scale: 1.2;
+}
+
+
 
 #paper_screenshots img {
   height: 8.484vw;
