@@ -109,7 +109,7 @@
     color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
-    font-size: 4vw;
+    font-size: 3vw;
     transition: color 0.3s ease-in-out;
   }
 
@@ -298,15 +298,27 @@
 
   #download{
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 52vh;
-
-    font-weight: bold;
-    font-size: 4em;
-
+    flex-direction: column;
     opacity: 0;
+    gap: 5vh;
+  }
+
+  /* Navigation Link Styling */
+  #download a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+
+  #download  p {
+    font-weight: 600;
+    font-size: 100%;
+    margin: 0;
+  }
+
+  #download  span {
+    opacity: 0.6;
+    font-size: 50%;
   }
 
   #kartik{
